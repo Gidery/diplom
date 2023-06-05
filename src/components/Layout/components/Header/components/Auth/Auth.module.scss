@@ -1,0 +1,20 @@
+.Auth {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+
+  & .Text {
+    cursor: pointer;
+    
+    &:hover {
+      color: #DF3B09;
+      text-decoration: underline;
+    }
+  }
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

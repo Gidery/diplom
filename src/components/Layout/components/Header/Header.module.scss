@@ -1,0 +1,22 @@
+.Header {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem;
+
+  & .HeaderWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    & .Title {
+      color: #333333;
+    }
+
+    & .SecondaryWrapper {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+  }
+}

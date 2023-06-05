@@ -1,0 +1,67 @@
+.Home {
+  height: 100%;
+}
+
+.ActualNews {
+  max-width: 90rem;
+  margin: 2rem auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #EEEEEE;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+  & .Header {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: #898989 1px solid;
+
+    & .Title {
+      font-size: large;
+      color: #333333;
+    }
+
+    & .Link {
+      color: #333333;
+      cursor: pointer;
+
+      &:hover {
+        color: #DF3B09;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  & .Main {
+    padding: 2rem;
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+.Peoples {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.PeopleCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & .Name {
+    font-size: large;
+  }
+
+  & .Text {
+    text-align: center;
+    color: #333333;
+  }
+
+}

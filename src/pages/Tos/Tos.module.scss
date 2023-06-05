@@ -1,0 +1,26 @@
+.Docs {
+  height: 100%;
+  width: 100%;
+
+  & .Header {
+    padding: 1rem;
+    color: #333333;
+    background-color: #EEEEEE;
+  }
+
+  .Main {
+    margin: 1rem auto;
+    padding: 2rem;
+    max-width: 90rem;
+
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    background-color: whitesmoke;
+
+    & .Text {
+      margin: 1rem 0;
+
+      font-size: large;
+      color: #333333;
+    }
+  }
+}

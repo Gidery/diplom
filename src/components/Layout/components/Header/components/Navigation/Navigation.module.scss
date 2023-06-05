@@ -1,0 +1,9 @@
+.Navigation {
+  display: flex;
+  gap: 1rem;
+
+  & .Text {
+    color: inherit;
+    border: none;
+  }
+}

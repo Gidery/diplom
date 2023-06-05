@@ -1,0 +1,21 @@
+.NewsCard {
+  max-width: 90rem;
+  padding: 2rem;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+
+  background-color: #EEEEEE;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+  & .Title {
+    color: #333333;
+    cursor: pointer;
+
+    &:hover {
+      color: #DF3B09;
+      text-decoration: underline;
+    }
+  }
+}

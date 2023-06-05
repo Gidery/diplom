@@ -1,0 +1,16 @@
+.Hero {
+  min-height: 460px;
+  display: flex;
+align-items: center;
+  justify-content: center;
+
+  background-image: url(img/hero.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  & .Text {
+    max-width: 41rem;
+    color: #333333;
+  }
+}
