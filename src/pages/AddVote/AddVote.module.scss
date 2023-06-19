@@ -1,0 +1,51 @@
+.AddVote {
+  height: 100%;
+  width: 100%;
+  padding-bottom: 1rem;
+
+  & .Header {
+    padding: 1rem;
+    color: #333333;
+    background-color: #EEEEEE;
+  }
+
+  & .Wrapper {
+    padding: 0 2rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    & .ImageControl {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+
+      & .Button {
+        align-self: flex-start;
+      }
+    }
+
+    .Options {
+      padding: 1rem;
+
+      & .OptionItem {
+        padding: 0.5rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+
+        border: solid 1px #898989;
+        border-radius: 0.5rem;
+      }
+    }
+
+    & .Controls {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+}

@@ -39,5 +39,22 @@
         gap: 0.5rem;
       }
     }
+
+    .Buttons {
+      margin-top: 2rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+
+      & .Link {
+        color: #333333;
+        cursor: pointer;
+
+        &:hover {
+          color: #DF3B09;
+          text-decoration: underline;
+        }
+      }
+    }
   }
 }

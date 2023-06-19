@@ -1,11 +1,11 @@
 import React from 'react';
-import styles from './Tos.module.scss'
 import { Typography } from "antd";
+import styles from './Tos.module.scss'
 
 const Tos: React.FC = () => {
     const { Paragraph, Text, Title } = Typography
     return (
-        <div className={styles.Docs}>
+        <div className={styles.Tos}>
             <Title level={3} className={styles.Header}>
                 Территориальное общественное самоуправление
             </Title>

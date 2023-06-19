@@ -36,7 +36,7 @@ const Navigation: React.FC = () => {
     return (
         <div className={styles.Navigation}>
             {navParams.map(({path, label}) => (
-                <NavLink to={path} style={changeActiveStyle}>
+                <NavLink key={path} to={path} style={changeActiveStyle}>
                     <Title level={4} className={styles.Text} >{label}</Title>
                 </NavLink>
             ))}

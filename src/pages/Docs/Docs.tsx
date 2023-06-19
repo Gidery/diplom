@@ -1,45 +1,87 @@
-import React from 'react';
-import { Typography } from "antd";
+import React, {ChangeEvent, useRef, useState} from 'react';
+import {Typography} from "antd";
 import styles from './Docs.module.scss'
+import FileItem from "../../components/FileItem/FileItem.tsx";
+import {useAppSelector} from "../../../redux/hooks/reduxHooks.ts";
+import dayjs from "dayjs";
 
 
 const Docs: React.FC = () => {
-    const { Title } = Typography
+  const {user} = useAppSelector(state => state.auth)
+  const inputRef = useRef<HTMLInputElement>(null)
+  const fileUrl = 'http://op-don.ru/publiccontrol/normpravdoc/profkodeks.doc'
 
-    return (
-        <div className={styles.Docs}>
-            <Title level={3} className={styles.Header}>
-                Нормативно-правовые документы
-            </Title>
+  const {Title, Text} = Typography
+  const [fileList, setFileList] = useState([
+      {
+        id: "0",
+        name: 'Указ Президента РФ от 07.05.2012г. №600',
+        url: fileUrl
+      },
+      {
+        id: "1",
+        name: 'ПРОФЕССИОНАЛЬНО-ЭТИЧЕСКИЙ КОДЕКС общественного жилищного инспектора',
+        url: fileUrl
+      },
+      {
+        id: "3",
+        name: 'Методические рекомендации о порядке осуществления общественного жилищного контроля общественными жилищными инспекторами',
+        url: fileUrl
+      },
+      {
+        id: "4",
+        name: 'Постановление Правительства РФ от 26.12.2016 N 1491 "О порядке осуществления общественного жилищного контроля" ',
+        url: fileUrl
+      },
+      {
+        id: "5",
+        name: 'Запрос о привлечении для проведения общественной проверки',
+        url: fileUrl
+      },
+    ]
+  )
 
-            <div className={styles.Wrapper}>
-                <ol type='1' className={styles.List}>
-                    <li className={styles.Item}>
-                        Указ Президента РФ от 07.05.2012г. №600
-                    </li>
-                    <li className={styles.Item}>
-                        ПРОФЕССИОНАЛЬНО-ЭТИЧЕСКИЙ КОДЕКС общественного жилищного инспектора
-                    </li>
-                    <li className={styles.Item}>
-                        ПОЛОЖЕНИЕ об организации деятельности общественных жилищных инспекторов на территории Ростовской области
-                    </li>
-                    <li className={styles.Item}>
-                        Методические рекомендации о порядке осуществления общественного жилищного контроля в форме общественных проверок общественными жилищными инспекторами (экспертами) Рабочей группы Общественной палаты Ростовской области по общественному жилищному контролю
-                    </li>
-                    <li className={styles.Item}>
-                        Постановление Правительства РФ от 26.12.2016 N 1491 "О порядке осуществления общественного жилищного контроля" (вместе с "Правилами осуществления общественного жилищного контроля")
-                    </li>
-                    <li className={styles.Item}>
-                        Запрос о привлечении для проведения общественной проверки
-                    </li>
-                    <li className={styles.Item}>
-                        Запрос о привлечении для проведения общественной экспертизы
-                    </li>
-                </ol>
-            </div>
+  const clickInput = () => inputRef.current?.click()
 
-        </div>
-    );
+  const deleteFile = (fileId: string) => setFileList(prevState => prevState.filter(({id}) => id !== fileId ))
+  const changeFile = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file === undefined || inputRef.current === undefined) return
+
+    setFileList(prevState => ([
+      ...prevState,
+      {
+        id: String( dayjs().unix()),
+        name: file.name,
+        url: fileUrl
+      }
+    ]))
+
+    inputRef.current.value = ''
+  }
+
+  return (
+    <div className={styles.Docs}>
+      <div className={styles.Header}>
+        <Title level={3} className={styles.Title}>
+          Нормативно-правовые документы
+        </Title>
+
+        {user?.role === 'admin' && <Text className={styles.Text} onClick={clickInput}>Добавить документ</Text>}
+      </div>
+
+      <div className={styles.Wrapper}>
+        <input hidden ref={inputRef} type='file' onChange={changeFile}/>
+        <ol type='1' className={styles.List}>
+          {fileList.map(file => (
+            <li key={file.id}>
+              <FileItem file={file} onDelete={deleteFile}/>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  );
 };
 
 export default Docs

@@ -1,0 +1,54 @@
+.Docs {
+  height: 100%;
+  width: 100%;
+
+  & .Header {
+    padding: 1rem;
+    color: #333333;
+    background-color: #EEEEEE;
+  }
+
+  .Main {
+    margin: 1rem auto;
+    padding: 2rem;
+    max-width: 25rem;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: whitesmoke;
+
+    & .Form {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      justify-items: end;
+      align-items: center;
+      gap: 1rem;
+
+      & .Title {
+        grid-column-start: 1;
+        grid-column-end: 2;
+      }
+
+      & .Input {
+        grid-column-start: 2;
+        grid-column-end: 3;
+      }
+    }
+
+    .Buttons {
+      margin-top: 2rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+
+      & .Link {
+        color: #333333;
+        cursor: pointer;
+
+        &:hover {
+          color: #DF3B09;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

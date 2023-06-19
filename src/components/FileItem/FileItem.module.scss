@@ -1,0 +1,23 @@
+.FileItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  & .FileName {
+    color: #333333;
+    cursor: pointer;
+
+    &:hover {
+      color: #DF3B09;
+      text-decoration: underline;
+    }
+  }
+
+  & .Icon {
+    cursor: pointer;
+
+    &:hover{
+      color: #DF3B09;
+    }
+  }
+}

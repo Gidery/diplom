@@ -16,11 +16,11 @@ const Footer: React.FC = () => {
                 </Title>
 
                 <Title level={4} className={styles.Text}>
-                    344002, г.Ростов-на-Дону, ул.Московская 51/15
+                    200623, г.Ростов-на-Дону, ул.Городская 12/34
                 </Title>
 
                 <Title level={4} className={styles.Text}>
-                    8 (863) 269-89-43
+                    8 (987) 654-32-10
                 </Title>
             </div>
         </footer>

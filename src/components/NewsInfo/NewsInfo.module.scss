@@ -1,0 +1,16 @@
+.NewsInfo {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-grow: 1;
+
+  & .InfoWrap {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    & *{
+      color: #898989;
+    }
+  }
+}

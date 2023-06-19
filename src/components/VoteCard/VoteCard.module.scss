@@ -1,0 +1,77 @@
+.VoteCard {
+  height: 100%;
+  width: 100%;
+  max-width: 72rem;
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+
+  background-color: #EEEEEE;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+  & .VotesContent {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    gap: 1rem;
+
+    & .Header {
+      display: flex;
+      justify-content: space-between;
+      color: #898989;
+      font-size: 18px;
+
+      & .Title {
+        color: #333333;
+        cursor: pointer;
+
+        &:hover {
+          color: #DF3B09;
+          text-decoration: underline;
+        }
+      }
+
+      & .Controls {
+        display: flex;
+        gap: 1rem;
+
+        & * {
+          cursor: pointer;
+          &:hover{
+            color: #DF3B09;
+          }
+        }
+      }
+    }
+
+    & .TextWrap{
+      width: 100%;
+
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      & .Paragraph {
+        max-height: 210px;
+        color: #333333;
+        font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
+        overflow: hidden;
+      }
+    }
+
+  }
+
+  & .OptionItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    & .Votes {
+      min-width: 4rem;
+    }
+  }
+}

@@ -3,7 +3,8 @@
   align-items: baseline;
   gap: 0.25rem;
 
-  & .Text {
+  & .Link {
+    color: #333333;
     cursor: pointer;
     
     &:hover {

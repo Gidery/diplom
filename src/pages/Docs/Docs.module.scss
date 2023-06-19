@@ -3,9 +3,26 @@
   width: 100%;
 
   & .Header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     padding: 1rem;
     color: #333333;
     background-color: #EEEEEE;
+
+    & .Title {
+      margin: 0;
+    }
+
+    & .Text {
+      cursor: pointer;
+
+      &:hover {
+        color: #DF3B09;
+        text-decoration: underline;
+      }
+    }
   }
 }
 
@@ -14,19 +31,8 @@
 }
 
 .List {
+  font-size: larger;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
-
-  & .Item {
-    font-size: larger;
-    color: #333333;
-    cursor: pointer;
-
-    &:hover {
-      color: #DF3B09;
-      text-decoration: underline;
-    }
-  }
 }

@@ -1,87 +1,105 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Info from "./components/Info/Info.tsx";
 import Hero from "./components/Hero/Hero.tsx";
-import { Typography } from "antd";
+import {notification, Typography} from "antd";
 import styles from './Home.module.scss'
 import NewsCard from "../../components/NewsCard/NewsCard.tsx";
 import {Link} from "react-router-dom";
+import {News} from "../../../redux/slices/news.ts";
+import axios from "../../../axios.ts";
 
 const Home: React.FC = () => {
-    const { Text } = Typography
-    return (
-        <div className={styles.Home}>
-            <Hero/>
-            <Info/>
+  const {Text, Title} = Typography
+  const [notificationApi, contextProvider] = notification.useNotification();
+  const [popularNews, setPopularNews] = useState<[News, News] | null>(null)
 
-            <div className={styles.ActualNews}>
-                <div className={styles.Header}>
-                    <Text strong className={styles.Title}>АКТУАЛЬНЫЕ НОВОСТИ</Text>
-                    <Link to='/news'>
-                        <Text className={styles.Link}>Читать все новости</Text>
-                    </Link>
-                </div>
+  useEffect(() => {
+    try {
+      axios.get('popular-news').then(({data}) => setPopularNews(data))
+    } catch (e) {
+      console.warn(e)
+      notificationApi.error({
+        message: 'Ошибка при получении популярных новостей',
+        description: `${e}`
+      })
+    }
+  }, [])
 
-                <div className={styles.Main}>
+  return (
+    <div className={styles.Home}>
+      {contextProvider}
+      <Hero/>
+      <Info/>
 
-                    <NewsCard
-                        imgHref='/public/news/news.jpeg'
-                        title='Поздравление с Днем Великой Победы!'
-                        text='1 февраля 2019 года в г. Новочеркасске, на площадке Общественной палаты города, было организовано и проведено выездное рабочее совещание Общественной палаты Ростовской области с целью проведения мониторинга исполнения рекомендаций, направленных в сентябре 2018 года в адрес органов местного самоуправления в рамках работы по созданию и обеспечению эффективного функционирования территориального общественного самоуправления (ТОС) на территории Ростовской области. 1 февраля 2019 года в г. Новочеркасске, на площадке Общественной палаты города, было организовано и проведено выездное рабочее совещание Общественной палаты Ростовской области с целью проведения мониторинга исполнения рекомендаций, направленных в сентябре 2018 года в адрес органов местного самоуправления в рамках работы по созданию и обеспечению эффективного функционирования территориального общественного самоуправления (ТОС) на территории Ростовской области. 1 февраля 2019 года в г. Новочеркасске, на площадке Общественной палаты города, было организовано и проведено выездное рабочее совещание Общественной палаты Ростовской области с целью проведения мониторинга исполнения рекомендаций, направленных в сентябре 2018 года в адрес органов местного самоуправления в рамках работы по созданию и обеспечению эффективного функционирования территориального общественного самоуправления (ТОС) на территории Ростовской области. 1 февраля 2019 года в г. Новочеркасске, на площадке Общественной палаты города, было организовано и проведено выездное рабочее совещание Общественной палаты Ростовской области с целью проведения мониторинга исполнения рекомендаций, направленных в сентябре 2018 года в адрес органов местного самоуправления в рамках работы по созданию и обеспечению эффективного функционирования территориального общественного самоуправления (ТОС) на территории Ростовской области.'
-                    />
-
-                    <NewsCard
-                        imgHref='/public/news/news0.jpg'
-                        title='Подведены итоги первого конкурса Фонда президентских грантов в 2023 году'
-                        text='1 февраля 2019 года в г. Новочеркасске, на площадке Общественной палаты города, было организовано и проведено выездное рабочее совещание Общественной палаты Ростовской области с целью проведения мониторинга исполнения рекомендаций, направленных в сентябре 2018 года в адрес органов местного самоуправления в рамках работы по созданию и обеспечению эффективного функционирования территориального общественного самоуправления (ТОС) на территории Ростовской области. 1 февраля 2019 года в г. Новочеркасске, на площадке Общественной палаты города, было организовано и проведено выездное рабочее совещание Общественной палаты Ростовской области с целью проведения мониторинга исполнения рекомендаций, направленных в сентябре 2018 года в адрес органов местного самоуправления в рамках работы по созданию и обеспечению эффективного функционирования территориального общественного самоуправления (ТОС) на территории Ростовской области. 1 февраля 2019 года в г. Новочеркасске, на площадке Общественной палаты города, было организовано и проведено выездное рабочее совещание Общественной палаты Ростовской области с целью проведения мониторинга исполнения рекомендаций, направленных в сентябре 2018 года в адрес органов местного самоуправления в рамках работы по созданию и обеспечению эффективного функционирования территориального общественного самоуправления (ТОС) на территории Ростовской области. 1 февраля 2019 года в г. Новочеркасске, на площадке Общественной палаты города, было организовано и проведено выездное рабочее совещание Общественной палаты Ростовской области с целью проведения мониторинга исполнения рекомендаций, направленных в сентябре 2018 года в адрес органов местного самоуправления в рамках работы по созданию и обеспечению эффективного функционирования территориального общественного самоуправления (ТОС) на территории Ростовской области.'
-                    />
-
-                </div>
-            </div>
-
-            <div className={styles.ActualNews}>
-                <div className={styles.Header}>
-                    <Text strong className={styles.Title}>ЧЛЕНЫ ОБЩЕСТВЕННОЙ ПАЛАТЫ</Text>
-                </div>
-
-                <div className={styles.Main}>
-                    <div className={styles.Peoples}>
-                        <div className={styles.PeopleCard}>
-                            <img width={200} height={200} src='/public/img/people/peope1.jpg'/>
-                            <Text strong className={`${styles.Name} ${styles.Text}`}>Васильева Василиса Витальевна</Text>
-                            <Text className={styles.Text}>
-                                Председатель регионального общественного жилищного контроля
-                            </Text>
-                        </div>
-
-                        <div className={styles.PeopleCard}>
-                            <img width={200} height={200} src='/public/img/people/people2.jpg'/>
-                            <Text strong className={styles.Name}>Васильева Василиса Витальевна</Text>
-                            <Text className={styles.Info}>
-                                Председатель регионального общественного жилищного контроля
-                            </Text>
-                        </div>
-
-                        <div className={styles.PeopleCard}>
-                            <img width={200} height={200} src='/public/img/people/people3.jpg'/>
-                            <Text strong className={styles.Name}>Васильева Василиса Витальевна</Text>
-                            <Text className={styles.Info}>
-                                Председатель регионального общественного жилищного контроля
-                            </Text>
-                        </div>
-
-                        <div className={styles.PeopleCard}>
-                            <img width={200} height={200} src='/public/img/people/people4.jpg'/>
-                            <Text strong className={styles.Name}>Васильева Василиса Витальевна</Text>
-                            <Text className={styles.Info}>
-                                Председатель регионального общественного жилищного контроля
-                            </Text>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+      <div className={styles.ActualNews}>
+        <div className={styles.Header}>
+          <Text strong className={styles.Title}>АКТУАЛЬНЫЕ НОВОСТИ</Text>
+          <Link to='/news'>
+            <Text className={styles.Link}>Читать все новости</Text>
+          </Link>
         </div>
-    );
+
+        <div className={styles.Main}>
+          {popularNews === null ? (
+            <Title>Загрузка данных...</Title>
+          ) : popularNews.map(({_id, title, text, author, createdAt, viewsCount, imageUrl}) => (
+            <NewsCard
+              _id={_id}
+              title={title}
+              text={text}
+              author={author}
+              createdAt={createdAt}
+              viewsCount={viewsCount}
+              imageUrl={imageUrl}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className={styles.ActualNews}>
+        <div className={styles.Header}>
+          <Text strong className={styles.Title}>ЧЛЕНЫ ОБЩЕСТВЕННОЙ ПАЛАТЫ</Text>
+        </div>
+
+        <div className={styles.Main}>
+          <div className={styles.Peoples}>
+            <div className={styles.PeopleCard}>
+              <img width={200} height={200} src='/public/img/people/peope1.jpg'/>
+              <Text strong className={styles.Name}>Васильева Василиса Витальевна</Text>
+              <Text className={styles.Text}>
+                Председатель регионального общественного жилищного контроля
+              </Text>
+            </div>
+
+            <div className={styles.PeopleCard}>
+              <img width={200} height={200} src='/public/img/people/people2.jpg'/>
+              <Text strong className={styles.Name}>Васильева Василиса Витальевна</Text>
+              <Text className={styles.Text}>
+                Председатель регионального общественного жилищного контроля
+              </Text>
+            </div>
+
+            <div className={styles.PeopleCard}>
+              <img width={200} height={200} src='/public/img/people/people3.jpg'/>
+              <Text strong className={styles.Name}>Васильева Василиса Витальевна</Text>
+              <Text className={styles.Text}>
+                Председатель регионального общественного жилищного контроля
+              </Text>
+            </div>
+
+            <div className={styles.PeopleCard}>
+              <img width={200} height={200} src='/public/img/people/people4.jpg'/>
+              <Text strong className={styles.Name}>Васильева Василиса Витальевна</Text>
+              <Text className={styles.Text}>
+                Председатель регионального общественного жилищного контроля
+              </Text>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  );
 };
 
 export default Home;
